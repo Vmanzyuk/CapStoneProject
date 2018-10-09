@@ -1,2 +1,3 @@
 env
-/ActualTokenList/ActualTokenList/settings.py
+/ActualTokenList/passwords.py
+*pyc

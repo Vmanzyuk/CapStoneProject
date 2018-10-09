@@ -2,8 +2,9 @@ from django.contrib import admin
 from django.urls import path
 from django.http import HttpResponseRedirect
 
-from .models import Token
 
+from .models import Token
+from .utils import fill_main_info
 
 class MyModelAdmin(admin.ModelAdmin):
     def get_urls(self):
@@ -15,13 +16,13 @@ class MyModelAdmin(admin.ModelAdmin):
         return my_urls + urls
 
     def delete_all_tokens(self, request):
-        self.model.objects.all().update(name='delete')
+        self.model.objects.all().delete()
         self.message_user(request, "All tokens was deleted")
         return HttpResponseRedirect("../")
 
     def first_fill(self, request):
-        self.model.objects.all().update(name='fill')
-        self.message_user(request, "Sucessful insert from CMC")
+        fill_main_info()
+        self.message_user(request, "Sucessful first fill")
         return HttpResponseRedirect("../")
 
 
