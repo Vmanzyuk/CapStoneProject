@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 
 
 from .models import Token
-from .utils import fill_main_info
+from .utils import fill_main_info, fill_additional_info
 
 class MyModelAdmin(admin.ModelAdmin):
     def get_urls(self):
@@ -22,6 +22,7 @@ class MyModelAdmin(admin.ModelAdmin):
 
     def first_fill(self, request):
         fill_main_info()
+        fill_additional_info()
         self.message_user(request, "Sucessful first fill")
         return HttpResponseRedirect("../")
 
@@ -29,7 +30,8 @@ class MyModelAdmin(admin.ModelAdmin):
 
 
 class TokenAdmin(MyModelAdmin):
-	change_list_template="entities/tokens_changelist.html"
+    list_display = ('id','name','symbol','explorer','based_on_blockchain','smart_contract_address')
+    change_list_template = "entities/tokens_changelist.html"
 
 admin.site.register(Token,TokenAdmin)
 
