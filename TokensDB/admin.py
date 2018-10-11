@@ -3,7 +3,7 @@ from django.urls import path
 from django.http import HttpResponseRedirect
 
 
-from .models import Token
+from .models import Token, Token_price
 from .utils import fill_main_info, fill_additional_info
 
 class MyModelAdmin(admin.ModelAdmin):
@@ -34,5 +34,5 @@ class TokenAdmin(MyModelAdmin):
     change_list_template = "entities/tokens_changelist.html"
 
 admin.site.register(Token,TokenAdmin)
-
+admin.site.register(Token_price)
 # Register your models here.

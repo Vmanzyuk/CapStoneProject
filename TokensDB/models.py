@@ -19,5 +19,5 @@ class Token_price(models.Model):
     Token = models.ForeignKey(Token,on_delete=models.CASCADE)
     cmc_usd_upd_date = models.DateTimeField(null=True)
     cmc_usd_price = models.FloatField(null=True)
-    cmc_btc_upd_date = models.DateTimeField(null=True)
-    cmc_btc_price = models.FloatField(null=True)
+    cmc_btc_upd_date = models.DateTimeField(null=True,blank=True)
+    cmc_btc_price = models.FloatField(null=True,blank=True)
