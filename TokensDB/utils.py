@@ -1,5 +1,5 @@
 import requests
-from .models import Token
+from .models import Token, Token_price
 from ActualTokenList.passwords import CMC_PRO_API_KEY
 
 
