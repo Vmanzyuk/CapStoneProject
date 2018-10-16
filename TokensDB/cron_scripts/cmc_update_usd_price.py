@@ -20,10 +20,13 @@ def cmc_update_usd_price():
     reqjson = r.json()
 
     for i in reqjson['data']:
-        token = Token.objects.filter(cmc_id=i['id']).first()
-        tp_obj = Token_price.objects.filter(Token=token).first()
-        tp_obj.cmc_usd_price = i['quote']['USD']['price']
-        tp_obj.cmc_usd_upd_date = i['quote']['USD']['last_updated']
-        tp_obj.save()
+        try:
+            token = Token.objects.get(cmc_id=i['id'])
+            obj = Token_price(token_id=token.id,cmc_usd_price=i['quote']['USD']['price'],cmc_usd_upd_date=i['quote']['USD']['last_updated'])
+            obj.save()
+        except Token.DoesNotExist:
+            pass
+
+
 
 

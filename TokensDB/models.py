@@ -16,7 +16,7 @@ class Token(models.Model):
     logo_link = models.CharField(null=True,max_length=500,blank=True)
 
 class Token_price(models.Model):
-    Token = models.ForeignKey(Token,on_delete=models.CASCADE)
+    token = models.ForeignKey(Token,on_delete=models.CASCADE)
     cmc_usd_upd_date = models.DateTimeField(null=True)
     cmc_usd_price = models.FloatField(null=True)
     cmc_btc_upd_date = models.DateTimeField(null=True,blank=True)
