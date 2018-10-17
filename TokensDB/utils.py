@@ -57,7 +57,7 @@ def fill_additional_info():
             i.explorer = req2json['data'][str(i.cmc_id)]['urls']['explorer'][0]
             for g in req2json['data'][str(i.cmc_id)]['urls']['explorer']:
                 if g.find('etherscan')!=-1:
-                    i.based_on_blockchain = 'Ethereum'
+                    i.blockchain = 'Ethereum'
                     i.smart_contract_address = g[-42:]
         else:
             pass

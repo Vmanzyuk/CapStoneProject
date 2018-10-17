@@ -30,7 +30,7 @@ class MyModelAdmin(admin.ModelAdmin):
 
 
 class TokenAdmin(MyModelAdmin):
-    list_display = ('id','name','symbol','explorer','based_on_blockchain','smart_contract_address')
+    list_display = ('id','name','symbol','explorer','blockchain','smart_contract_address')
     change_list_template = "entities/tokens_changelist.html"
 
 admin.site.register(Token,TokenAdmin)

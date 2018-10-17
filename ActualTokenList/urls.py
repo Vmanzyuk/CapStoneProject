@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from . import views
 
 urlpatterns = [
-    path('v1/cryptocurrency/info',views.get_cryptocurrency_info),
+    path('api/',include('api.urls')),
     path('TokensDB/',include('TokensDB.urls')),
     path('admin/', admin.site.urls),
 ]

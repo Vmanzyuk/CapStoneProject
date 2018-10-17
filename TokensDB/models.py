@@ -8,7 +8,7 @@ class Token(models.Model):
     max_supply = models.FloatField(null=True,blank=True)
     cmc_id = models.IntegerField(null=True,blank=True)
     explorer = models.CharField(null=True,max_length=200,blank=True)
-    based_on_blockchain = models.CharField(null=True,max_length=200,blank=True)
+    blockchain = models.CharField(null=True,max_length=200,blank=True)
     smart_contract_address = models.CharField(null=True,max_length=200,blank=True)
     website = models.CharField(null=True,max_length=200,blank=True)
     reddit = models.CharField(null=True,max_length=200,blank=True)
