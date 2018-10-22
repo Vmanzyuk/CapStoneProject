@@ -7,8 +7,15 @@ from django.db.models import Max
 def get_cryptocurrency_test(request):
     data = []
 
-    for token_price in Token_price.objects.filter(token__name__in=['0x','0xBitcoin']).order_by('-cmc_usd_upd_date'):
-        data.append({ 'name': token_price.token.name, 'symbol': token_price.token.symbol,'cmc_usd_price':token_price.cmc_usd_price,'cmc_usd_upd_date': token_price.cmc_usd_upd_date })
+    for i in Token.objects.all():
+    	last_token_price_obj = Token_price.objects.filter(token_id=i.id).order_by('-cmc_usd_upd_date').last()
+
+
+    	data.append({ 'name': i.name, 'symbol': i.symbol, 'circulating_supply' : i.circulating_supply,
+    	'total_supply': i.total_supply, 'max_supply' : i.max_supply, 'coinmarketcap_id' : i.cmc_id,
+    	'explorer': i.explorer, 'blockchain' : i.blockchain, 'smart_contract_address' : i.smart_contract_address,
+    	'website' : i.website, 'twitter' : i.twitter, 'reddit' : i.reddit, 'logo_link' : i.logo_link,
+    	'coinmarketcap_usd_price' : last_token_price_obj.cmc_usd_price, 'coinmarketcap_usd_upd_date' : last_token_price_obj.cmc_usd_upd_date })
 
 
     return JsonResponse({'data': data})
